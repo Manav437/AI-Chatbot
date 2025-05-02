@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Mauline';
+    src: url('../../fonts/Mauline.otf') format('truetype');
+    /* font-weight: 00; */
+    /* font-style: normal; */
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -31,19 +38,28 @@ html {
 
 .get-started {
     border: 1px solid white;
-    background-image: linear-gradient(to bottom, #3f7cac, #1e3c60);
-    color: white;
+    background-image: linear-gradient(98.7deg, rgba(6,238,243,1) 10.6%, rgba(34,126,209,1) 72.2%, rgba(35,44,51,1) 122.5%);
+    color: black;
     padding: 5px;
     font-weight: 600;
     border-radius: 10px;
-    /* color: black; */
+    transition: all 0.3s ease;
+    background-size: 200% 200%;
+    animation: gradientMove 5s ease infinite;
 }
 
 .get-started:hover {
-    color: black;
-    background-image: linear-gradient(to bottom, #a8c0ff, #3f7cac);
-
+    color: green;
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(202,248,255,1) 0%, rgba(186,204,227,1) 51.2%, rgba(117,144,179,1) 100.1%);
+    animation: pulse 0.6s ease;
 }
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
 .about {
     border-top: 1px solid white;
     display: flex;
@@ -57,17 +73,37 @@ html {
     width: 50%;
 }
 
-.about-two > p {
+.about-two  p {
     font-size: 1.5rem;
     width: 60%;
-    margin: 100px 100px 250px auto;
+    margin: 130px 100px 0 auto;
 }
 
+.ellipse-container {
+    position: relative;
+    display: inline-block;
+}
+  
+.ellipse-shape {
+    position: absolute;
+    top: 90px;
+    left: 260px;
+    width: 350px;
+    height: 200px;
+    border: 3px dashed #cdcf30; /* Change color as needed */
+    border-radius: 50% / 50%;
+    z-index: -1;
+    transform: rotate(-20deg); /* optional for style */
+}
+
+
 .text-one {
-    font-family: "Playwrite NG Modern", cursive;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-size: 5em;
+    margin-top: 70px;
+    font-family: "Mauline";
+  /* font-optical-sizing: auto; */
+  line-height: 1;
+  font-weight: 800;
+  font-size: 7rem;
   font-style: normal;
 }
 
@@ -78,6 +114,9 @@ html {
 }
 
 .one-img img {
+    border: 1px solid white;
+    padding: 10px;
+    border-radius: 20px;
     height: 100%;
     width: 100%;
     transform: rotate(0deg);

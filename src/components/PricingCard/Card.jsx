@@ -5,7 +5,7 @@ const SquishyCard = () => {
     const plans = [
         { title: "Individual Free", price: "$0", description: "Basic access with limited features.", color: "#3b82f6" }, // blue
         { title: "Individual Pro", price: "$299", description: "Access to all pro features.", color: "#8b5cf6" }, // purple
-        { title: "Enterprise", price: "$999", description: "Full enterprise-level access.", color: "#ec4899" } // pink
+        { title: "Enterprise", price: "$999", description: "Full enterprise-level access. Connect for more details.", color: "#ec4899" } // pink
     ];
 
     return (

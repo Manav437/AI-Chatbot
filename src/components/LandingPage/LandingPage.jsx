@@ -6,29 +6,58 @@ function LandingPage() {
     return (
         <div className="landing-page">
             <div className="navbar">
-                <a className="a-tag" style={{ fontWeight: "500", padding: "5px", borderRadius: "10px", border: "1px solid white" }} href="#pricing">pricing</a>
-                <a className="a-tag" style={{ fontWeight: "500", padding: "5px", borderRadius: "10px", border: "1px solid white" }} href="#socials">connect</a>
-                <Link className="get-started" to="/chat">get started</Link>
+                <a className="a-tag" style={{ fontWeight: "500", padding: "5px 9px", borderRadius: "20px", border: "1px solid white" }} href="#pricing">pricing</a>
+                <a className="a-tag" style={{ fontWeight: "500", padding: "5px 9px", borderRadius: "20px", border: "1px solid white" }} href="#socials">connect</a>
+                <Link style={{ color: "black" }} className="get-started" to="/chat">get started</Link>
             </div>
 
             <div className="about">
                 <div className="about-one">
                     <div className="text-one">
-                        <h1 style={{ paddingTop: "35px", margin: "0" }}>Gemini X</h1>
+                        <h1 style={{ margin: "0" }}>Gemini <br /> X</h1>
                     </div>
 
                     <div className="one-img">
-                        <img src="https://i.pinimg.com/736x/8d/ff/a1/8dffa167d7c06c98303cf74e1e684c0c.jpg" alt="" />
+                        <img src="/chat-example.png" alt="" />
                     </div>
                 </div>
                 <div className="about-two">
-                    <p>Generate high-quality, real-time content with ease using Gemini X, designed to help creators and developers get text done in seconds.
-                    </p>
+                    <div className="ellipse-container">
+                        <div className="ellipse-shape"></div>
+                        <p>Generate high-quality, real-time content with ease
+                            using Gemini X, designed to help creators and developers
+                            get text done in seconds.
+                        </p>
+                    </div>
 
-                    <div style={{ padding: "20px", display: "flex", flexDirection: "column", justifyContent: "space-between", marginTop: "220px", height: "400px" }}>
-                        <p style={{ fontSize: "1.5rem", textAlign: "start", margin: "0" }}>Student by day ☀️</p>
+                    <div style={{ position: "relative", width: "100%", padding: "20px", display: "flex", flexDirection: "column", justifyContent: "space-between", marginTop: "220px", height: "400px" }}>
+                        {/* Arrow SVG */}
+                        <svg
+                            style={{ zIndex: "1", position: "absolute", top: "30px", left: "0", width: "90%", height: "90%", pointerEvents: "none" }}
+                        >
+                            <defs>
+                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="white" />
+                                </marker>
 
-                        <p style={{ fontSize: "1.5rem", textAlign: "end", margin: "0" }}>🌜Engineer by night</p>
+                            </defs>
+                            <line
+                                x1="200px"
+                                y1="25px"
+                                x2="80%"
+                                y2="81%"
+                                stroke="white"
+                                strokeWidth="2"
+                                markerEnd="url(#arrowhead)"
+                                strokeDasharray="6,4"
+                            />
+                        </svg>
+
+                        <p style={{ width: "100%", fontSize: "1.5rem", textAlign: "start", margin: "0" }}>Student by day ☀️</p>
+                        <p style={{ zIndex: "2", alignItems: "center", margin: "0 auto" }}>
+                            <img style={{ height: "60px", borderRadius: "10px" }} src="/giphy.gif" alt="" />
+                        </p>
+                        <p style={{ width: "100%", fontSize: "1.5rem", textAlign: "end", margin: "0" }}>🌜Engineer by night</p>
                     </div>
                 </div>
             </div>
