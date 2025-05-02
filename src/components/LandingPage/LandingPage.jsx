@@ -48,22 +48,22 @@ function LandingPage() {
                     <div style={{ paddingTop: "5px", display: "flex", alignItems: "center", justifyContent: "flex-start", gap: "30px", width: "95%", margin: "0 auto" }}>
                         <p style={{ fontSize: "1.2rem", fontWeight: "800", color: "black" }}>Let's Connect :</p>
                         <div className="tooltip">
-                            <a href=""><img src="/twitter.png" alt="twitter" /></a>
+                            <a target="_blank" href="https://x.com/Manav437"><img src="/twitter.png" alt="twitter" /></a>
                             <span className="tooltiptext">Twitter</span>
                         </div>
 
                         <div className="tooltip">
-                            <a href=""><img src="/github.png" alt="GitHub" /></a>
+                            <a target="_blank" href="https://github.com/Manav437"><img src="/github.png" alt="GitHub" /></a>
                             <span className="tooltiptext">GitHub</span>
                         </div>
 
                         <div className="tooltip">
-                            <a href=""><img src="/linkedin.png" alt="LinkedIn" /></a>
+                            <a target="_blank" href="https://www.linkedin.com/in/manav-gusain/"><img src="/linkedin.png" alt="LinkedIn" /></a>
                             <span className="tooltiptext">LinkedIn</span>
                         </div>
 
                         <div className="tooltip">
-                            <a href=""><img src="/twitch.png" alt="Twitch" /></a>
+                            <a target="_blank" href="https://www.twitch.tv/manav437"><img src="/twitch.png" alt="Twitch" /></a>
                             <span className="tooltiptext">Twitch</span>
                         </div>
 
