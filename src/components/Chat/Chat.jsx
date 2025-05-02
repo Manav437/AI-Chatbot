@@ -5,7 +5,7 @@ import styles from "./Chat.module.css"
 const WELCOME_MESSAGE_GROUP = [
     {
         role: "assistant",
-        content: "Hello! How may I assist you. 😄"
+        content: "Hello! How may I assist you. 🤠"
     },
 ]
 

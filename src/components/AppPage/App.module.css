@@ -1,0 +1,75 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    height: 100vh;
+    padding: 16px;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+::selection {
+    background-color: lightskyblue; 
+    /* color: black;  */
+}
+
+.Header {
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.Logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.Title {
+    font-size: 2.5rem;
+    position: relative;
+    display: inline-block;  /* shrink to fit text */
+    margin: 0;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    z-index: 1;
+}
+
+.Title:hover {
+    cursor: cell;
+}
+
+.Title::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(ellipse, rgba(113, 179, 226, 0.4), transparent 70%);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0;
+    transition: width 0.4s ease, height 0.4s ease, opacity 0.5s ease;
+}
+
+.Title:hover::before {
+    width: 150%;
+    height: 100%;
+    opacity: 1;
+}
+
+.ChatContainer {
+    flex-grow: 1;
+    width: 100%;
+    background: light-dark( #ffffff, #212121);
+    border-radius: 16px;
+    overflow-y: auto;
+}
