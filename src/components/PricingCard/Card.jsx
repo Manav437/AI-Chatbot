@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import './Card.css';
 
@@ -64,9 +65,9 @@ const Card = ({ title, price, description, color }) => {
                     {description}
                 </p>
             </div>
-            <button className="button">
-                Get it now
-            </button>
+            {/* <button className="button"> */}
+            <Link className="button" to="/chat">Get it now</Link>
+            {/* </button> */}
             <Background />
         </motion.div>
     );

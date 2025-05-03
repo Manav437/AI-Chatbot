@@ -1,11 +1,22 @@
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import SquishyCard from "../PricingCard/Card"
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import "./LandingPage.css"
 
 function LandingPage() {
+
+    useEffect(() => {
+        AOS.init({
+            duration: 1000, // animation duration in ms
+            once: true, // whether animation should happen only once
+        });
+    }, []);
+
     return (
         <div className="landing-page">
-            <div className="navbar">
+            <div className="navbar" data-aos="fade-down">
                 <a className="a-tag" style={{ fontWeight: "500", padding: "5px 9px", borderRadius: "20px", border: "1px solid white" }} href="#pricing">pricing</a>
                 <a className="a-tag" style={{ fontWeight: "500", padding: "5px 9px", borderRadius: "20px", border: "1px solid white" }} href="#socials">connect</a>
                 <Link style={{ color: "black" }} className="get-started" to="/chat">get started</Link>
@@ -14,7 +25,7 @@ function LandingPage() {
             <div className="about">
                 <div className="about-one">
                     <div className="text-one">
-                        <h1 style={{ margin: "0" }}>Gemini <br /> X</h1>
+                        <h1 style={{ margin: "0" }} data-aos="fade-left">Gemini <br /> X</h1>
                     </div>
 
                     <div className="one-img">
@@ -22,15 +33,15 @@ function LandingPage() {
                     </div>
                 </div>
                 <div className="about-two">
-                    <div className="ellipse-container">
+                    <div className="ellipse-container" data-aos="fade-up">
                         <div className="ellipse-shape"></div>
-                        <p>Generate high-quality, real-time content with ease
+                        <p data-aos="zoom-in" >Generate high-quality, real-time content with ease
                             using Gemini X, designed to help creators and developers
                             get text done in seconds.
                         </p>
                     </div>
 
-                    <div style={{ position: "relative", width: "100%", padding: "20px", display: "flex", flexDirection: "column", justifyContent: "space-between", marginTop: "220px", height: "400px" }}>
+                    <div style={{ position: "relative", width: "100%", padding: "20px", display: "flex", flexDirection: "column", justifyContent: "space-between", marginTop: "220px", height: "400px" }} >
                         {/* Arrow SVG */}
                         <svg
                             style={{ zIndex: "1", position: "absolute", top: "30px", left: "0", width: "90%", height: "90%", pointerEvents: "none" }}
@@ -63,7 +74,8 @@ function LandingPage() {
             </div>
 
 
-            <div id="pricing" className="info">
+            <div id="pricing" className="info" data-aos="fade-up"
+                data-aos-easing="ease-in">
                 <div className="info-content">
                     <h3 style={{ fontWeight: "800", fontSize: "2rem", color: "#fff" }}>PRICING</h3>
                     <SquishyCard />
@@ -99,7 +111,7 @@ function LandingPage() {
                     </div>
                 </div>
                 <div style={{ background: "#F5EEDD", margin: "auto", width: "95%" }}>
-                    <p>© Copyright 2025 <img src="https://xtinastarr.com/assets/img/xtinalogo.svg" alt="" /></p>
+                    <p>© Copyright 2025 <img className="spin" src="https://xtinastarr.com/assets/img/xtinalogo.svg" alt="" /></p>
                 </div>
             </div>
         </div>

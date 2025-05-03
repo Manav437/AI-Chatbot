@@ -67,6 +67,14 @@
   color: #2d2d2d;
   backdrop-filter: blur(10px);
   transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+  text-align: center;
+}
+
+.card-link {
+  text-decoration: none;
+  color: black;
+  width: 100%;
 }
 
 .button:hover {

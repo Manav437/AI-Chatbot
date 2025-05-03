@@ -1,14 +1,24 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Assistant } from "../../assistance/googleai"
 import { Chat } from "../Chat/Chat"
 import { Controls } from "../Controls/Controls"
 import { Loader } from "../Loader/Loader"
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import styles from "./App.module.css"
 
 function AppPage() {
     const assistant = new Assistant()
     const [messages, setMessages] = useState([])
     const [isLoading, setIsLoading] = useState(false)
+
+    useEffect(() => {
+        AOS.init({
+            duration: 1200, // animation duration in ms
+            once: true, // whether animation should happen only once
+            easing: 'ease-in-out',
+        });
+    }, []);
 
     function addMessage(message) {
         setMessages((prevMessages) => [...prevMessages, message])
@@ -39,7 +49,7 @@ function AppPage() {
             minHeight: "100vh",
             width: "100vw",
             color: "white"
-        }}>
+        }} data-aos="fade-in">
             <div className={styles.App}>
                 {isLoading && <Loader />}
                 <header className={styles.Header}>
