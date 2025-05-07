@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import SquishyCard from "../PricingCard/Card"
+import { BouncyCardsFeatures } from "../FeatureCard/FeatureCard"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import "./LandingPage.css"
@@ -17,8 +18,8 @@ function LandingPage() {
     return (
         <div className="landing-page">
             <div className="navbar" data-aos="fade-down">
-                <a className="a-tag" style={{ fontWeight: "500", padding: "5px 9px", borderRadius: "20px", border: "1px solid white" }} href="#pricing">pricing</a>
-                <a className="a-tag" style={{ fontWeight: "500", padding: "5px 9px", borderRadius: "20px", border: "1px solid white" }} href="#socials">connect</a>
+                <a className="a-tag" style={{ fontWeight: "500", padding: "5px 9px", borderRadius: "10px" }} href="#pricing">pricing</a>
+                <a className="a-tag" style={{ fontWeight: "500", padding: "5px 9px", borderRadius: "10px" }} href="#features">features</a>
                 <Link style={{ color: "black" }} className="get-started" to="/chat">get started</Link>
             </div>
 
@@ -28,7 +29,7 @@ function LandingPage() {
                         <h1 style={{ margin: "0" }} data-aos="fade-left">Gemini <br /> X</h1>
                     </div>
 
-                    <div className="one-img">
+                    <div className="one-img" data-aos="flip-left">
                         <img src="/chat-example.png" alt="" />
                     </div>
                 </div>
@@ -44,40 +45,46 @@ function LandingPage() {
                     <div style={{ position: "relative", width: "100%", padding: "20px", display: "flex", flexDirection: "column", justifyContent: "space-between", marginTop: "220px", height: "400px" }} >
                         {/* Arrow SVG */}
                         <svg
-                            style={{ zIndex: "1", position: "absolute", top: "30px", left: "0", width: "90%", height: "90%", pointerEvents: "none" }}
+                            style={{ zIndex: 1, position: "absolute", top: "30px", left: "0", width: "100%", height: "100%", pointerEvents: "none" }}
+                            viewBox="0 0 300 200" // You can adjust this size as needed
+                            preserveAspectRatio="xMidYMid meet"
                         >
                             <defs>
                                 <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
                                     <polygon points="0 0, 10 3.5, 0 7" fill="white" />
                                 </marker>
-
                             </defs>
+
                             <line
-                                x1="200px"
-                                y1="25px"
-                                x2="80%"
-                                y2="81%"
+                                className="draw-arrow"
+                                x1="50"
+                                y1="20"
+                                x2="250"  // Reaches far right
+                                y2="140"  // Reaches near bottom
                                 stroke="white"
                                 strokeWidth="2"
                                 markerEnd="url(#arrowhead)"
-                                strokeDasharray="6,4"
                             />
                         </svg>
 
                         <p style={{ width: "100%", fontSize: "1.5rem", textAlign: "start", margin: "0" }}>Student by day ☀️</p>
                         <p style={{ zIndex: "2", alignItems: "center", margin: "0 auto" }}>
-                            <img style={{ height: "60px", borderRadius: "10px" }} src="/giphy.gif" alt="" />
+                            <img style={{ height: "100px", borderRadius: "10px" }} src="/giphy.gif" alt="" />
                         </p>
                         <p style={{ width: "100%", fontSize: "1.5rem", textAlign: "end", margin: "0" }}>🌜Engineer by night</p>
                     </div>
                 </div>
             </div>
 
+            <div id="features" style={{ width: "80%", margin: "0 auto" }}>
+                <BouncyCardsFeatures />
+            </div>
+
 
             <div id="pricing" className="info" data-aos="fade-up"
                 data-aos-easing="ease-in">
                 <div className="info-content">
-                    <h3 style={{ fontWeight: "800", fontSize: "2rem", color: "#fff" }}>PRICING</h3>
+                    <h1 style={{ fontWeight: "800", fontSize: "3rem", textDecoration: "underline", textUnderlineOffset: "5px", color: "#fff" }}>PRICING</h1>
                     <SquishyCard />
                     {/* <p className="follow-p"><a target="_blank" href="https://x.com/Manav437">Follow Manav →</a></p> */}
                 </div>

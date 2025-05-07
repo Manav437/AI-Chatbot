@@ -39,5 +39,4 @@ export function Chat({ messages }) {
             <div ref={messagesEndRef} />
         </div>
     )
-
 }

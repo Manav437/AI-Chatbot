@@ -35,7 +35,7 @@ export function Controls({ isDisabled = false, onSend }) {
                 <TextareaAutosize
                     ref={textareaRef}
                     className={styles.TextArea}
-                    placeholder="Message AI Chatbot"
+                    placeholder="Message Gemini X"
                     value={content}
                     disabled={isDisabled}
                     minRows={1}

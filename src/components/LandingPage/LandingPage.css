@@ -28,6 +28,7 @@ html {
 
 .a-tag:hover {
     background: #2C2C2C;
+    border: 1px dashed white;
 }
 
 .navbar > a {
@@ -37,36 +38,43 @@ html {
 }
 
 .get-started {
-    border: 1px solid white;
-    background-image: linear-gradient(98.7deg, rgba(6,238,243,1) 10.6%, rgba(34,126,209,1) 72.2%, rgba(35,44,51,1) 122.5%);
+    border: 1px solid rgb(2, 39, 38);
+    background-color: white;
     color: black;
     padding: 5px;
     font-weight: 600;
     border-radius: 10px;
     transition: all 0.3s ease;
-    background-size: 200% 200%;
-    animation: gradientMove 5s ease infinite;
 }
 
 .get-started:hover {
     color: green;
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(202,248,255,1) 0%, rgba(186,204,227,1) 51.2%, rgba(117,144,179,1) 100.1%);
-    animation: pulse 0.6s ease;
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(202,248,255,1) 0%, rgba(186,204,227,1) 51.2%, rgb(175, 193, 216) 100.1%);
+    transform: scale(1.05);
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+.draw-arrow {
+    stroke-dasharray: 300;        /* Length of dash pattern */
+    stroke-dashoffset: 300;       /* Hidden at start */
+    animation: draw 2s ease forwards;
+  }
+  
+@keyframes draw {
+    to {
+      stroke-dashoffset: 0;       /* Reveals the line */
+    }
 }
 
 .about {
-    border-top: 1px solid white;
+    border-top: 1px dashed rgb(100, 100, 0);
     display: flex;
     text-align: center;
     min-height: 100vh;
     flex-direction: row;
     width: 100%;
+    border-bottom: 1px dashed rgb(100, 100, 0);
+    padding-bottom: 100px;
+
 }
 
 .about-one, .about-two {
@@ -114,7 +122,8 @@ html {
 }
 
 .one-img img {
-    border: 1px solid white;
+    object-fit: fill;
+    border: 1px dashed rgb(94, 94, 0);
     padding: 10px;
     border-radius: 20px;
     height: 100%;
@@ -123,11 +132,15 @@ html {
 }
 
 .info {
+    border-top: 1px dashed rgb(163, 163, 1);
     width: 100%;
+    min-height: 90vh;
     margin-top: 30px;
+    /* border-bottom: 1px dashed rgb(163, 163, 1); */
 }
 
 .info-content {
+    min-height: 100%;
     width: 75%;
     margin: 20px auto;
 }

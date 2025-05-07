@@ -19,13 +19,18 @@
  
 .Message {
     width: 90%;
+    overflow-x: auto;
     padding: 0 16px;
     border-radius: 16px;
-    font-size: 15px;
+    font-size: 14px;
+    background: #1b1b1b;
+    color: white; /* Ensures assistant text is readable */
+}
 
-    &[data-role="user"] {
-        align-self: flex-end;
-        background: light-dark(#f3f3f3, #303030);
-    }
-
+/* Proper selector for user role */
+.Message[data-role="user"] {
+    align-self: flex-end;
+    min-height: 50px;
+    background: #2C2C2C;
+    color: white; /* Ensures user text is readable */
 }

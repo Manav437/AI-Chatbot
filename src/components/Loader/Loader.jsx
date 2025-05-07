@@ -4,7 +4,6 @@ export function Loader() {
     return (
         <div className={styles.LoaderWrapper}>
             <div className={styles.Loader}>
-
             </div>
         </div>
     )
