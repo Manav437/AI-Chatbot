@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react"
 import TextareaAutosize from "react-textarea-autosize"
 import styles from "./Controls.module.css"
 
-export function Controls({ isDisabled = false, onSend }) {
+export function Controls({ isDisabled = false, onSend, onFocus }) {
     const textareaRef = useRef(null)
     const [content, setContent] = useState("")
 
@@ -42,6 +42,7 @@ export function Controls({ isDisabled = false, onSend }) {
                     maxRows={4}
                     onChange={handleContentChange}
                     onKeyDown={handleEnterPress}
+                    onFocus={onFocus}
                 />
             </div>
             <button className={styles.Button} disabled={isDisabled} onClick={handleContentSend}><SendIcon /></button>

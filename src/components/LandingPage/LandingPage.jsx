@@ -42,7 +42,7 @@ function LandingPage() {
                         </p>
                     </div>
 
-                    <div style={{ position: "relative", width: "100%", padding: "20px", display: "flex", flexDirection: "column", justifyContent: "space-between", marginTop: "220px", height: "400px" }} >
+                    <div className="student-div" >
                         {/* Arrow SVG */}
                         <svg
                             style={{ zIndex: 1, position: "absolute", top: "30px", left: "0", width: "100%", height: "100%", pointerEvents: "none" }}

@@ -3,6 +3,7 @@ import { Assistant } from "../../assistance/googleai"
 import { Chat } from "../Chat/Chat"
 import { Controls } from "../Controls/Controls"
 import { Loader } from "../Loader/Loader"
+import { Link } from "react-router-dom"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import styles from "./App.module.css"
@@ -53,7 +54,7 @@ function AppPage() {
             <div className={styles.App}>
                 {isLoading && <Loader />}
                 <header className={styles.Header}>
-                    <img className={styles.Logo} src="/header-img.png" />
+                    <Link style={{ cursor: "pointer" }} to="/"><img className={styles.Logo} src="/header-img.png" /></Link>
                     <h2 className={styles.Title}>Gemini X</h2>
                 </header>
 

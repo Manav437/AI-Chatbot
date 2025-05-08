@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import "./FeatureCard.css";
@@ -12,6 +13,7 @@ export const BouncyCardsFeatures = () => {
             once: true, // whether animation should happen only once
         });
     }, []);
+
     return (
         <section className="features-section">
             <div className="features-header">
@@ -20,13 +22,14 @@ export const BouncyCardsFeatures = () => {
                     Grow faster with our
                     <span className="text-muted"> all in one solution</span>
                 </h2>
-                <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="features-button"
-                >
-                    Learn more
-                </motion.button>
+                <Link to='/chat'>
+                    <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="features-button"
+                    >
+                        Get Started
+                    </motion.button></Link>
             </div>
             <div className="features-grid">
                 <BounceCard className="grid-span-1">
