@@ -3,18 +3,21 @@
     align-items: center;
     gap: 8px;
     width: 100%;
+    margin-bottom: 5px;
 }
 
 .TextAreaContainer {
     flex-grow: 1;
     padding: 8px 16px;
     line-height: 0;
-    border:1px solid grey;
-    border-radius: 16px;
-    background: light-dark(#ffffff, #212121);
+    border:1px solid transparent;
+    border-radius: 10px;
+    background: light-dark(#ffffff, #0d0d0d);
 }
 
-
+.TextAreaContainer:has(textarea:focus) {
+    border: 1px solid #535353;
+}
 .TextArea {
     color: light-dark(#0d0d0d, #ffffff);
     caret-color: light-dark(#0d0d0d, #ffffff);
@@ -23,7 +26,7 @@
     border: none;
     outline: none;
     resize: none;
-    background: light-dark(#ffffff, #212121);
+    background: light-dark(#ffffff, black);
 }
 
 .Button {

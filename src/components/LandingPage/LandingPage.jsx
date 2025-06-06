@@ -18,9 +18,9 @@ function LandingPage() {
     return (
         <div className="landing-page">
             <div className="navbar" data-aos="fade-down">
-                <a className="a-tag" style={{ fontWeight: "500", padding: "5px 9px", borderRadius: "10px" }} href="#pricing">pricing</a>
-                <a className="a-tag" style={{ fontWeight: "500", padding: "5px 9px", borderRadius: "10px" }} href="#features">features</a>
-                <Link style={{ color: "black" }} className="get-started" to="/chat">get started</Link>
+                <a className="a-tag" style={{ fontWeight: "700", padding: "5px 9px", borderRadius: "10px" }} href="#pricing">pricing</a>
+                <a className="a-tag" style={{ fontWeight: "700", padding: "5px 9px", borderRadius: "10px" }} href="#features">features</a>
+                <Link style={{ color: "black" }} className="get-started" to="/chat">TRY NOW</Link>
             </div>
 
             <div className="about">
@@ -29,7 +29,7 @@ function LandingPage() {
                         <h1 style={{ margin: "0" }} data-aos="fade-left">Gemini <br /> X</h1>
                     </div>
 
-                    <div className="one-img" data-aos="flip-left">
+                    <div className="one-img">
                         <img src="/chat-example.png" alt="" />
                     </div>
                 </div>
@@ -69,20 +69,19 @@ function LandingPage() {
 
                         <p style={{ width: "100%", fontSize: "1.5rem", textAlign: "start", margin: "0" }}>Student by day ☀️</p>
                         <p style={{ zIndex: "2", alignItems: "center", margin: "0 auto" }}>
-                            <img style={{ height: "100px", borderRadius: "10px" }} src="/giphy.gif" alt="" />
+                            <img style={{ height: "110px", borderRadius: "10px" }} src="https://i.pinimg.com/originals/11/89/75/118975fbaee98771358217256730bc40.gif" alt="" />
                         </p>
                         <p style={{ width: "100%", fontSize: "1.5rem", textAlign: "end", margin: "0" }}>🌜Engineer by night</p>
                     </div>
                 </div>
             </div>
 
-            <div id="features" style={{ width: "80%", margin: "0 auto" }}>
+            <div id="features" style={{ width: "100%", margin: "0 auto" }}>
                 <BouncyCardsFeatures />
             </div>
 
 
-            <div id="pricing" className="info" data-aos="fade-up"
-                data-aos-easing="ease-in">
+            <div id="pricing" className="info" >
                 <div className="info-content">
                     <h1 style={{ fontWeight: "800", fontSize: "3rem", textDecoration: "underline", textUnderlineOffset: "5px", color: "#fff" }}>PRICING</h1>
                     <SquishyCard />
@@ -118,7 +117,7 @@ function LandingPage() {
                     </div>
                 </div>
                 <div style={{ background: "#F5EEDD", margin: "auto", width: "95%" }}>
-                    <p>© Copyright 2025 <img className="spin" src="https://xtinastarr.com/assets/img/xtinalogo.svg" alt="" /></p>
+                    <p style={{ fontSize: "1rem" }}>© Copyright 2025 <img className="spin" src="https://xtinastarr.com/assets/img/xtinalogo.svg" alt="" /></p>
                 </div>
             </div>
         </div>

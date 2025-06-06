@@ -31,7 +31,7 @@ export function Controls({ isDisabled = false, onSend, onFocus }) {
 
     return (
         <div className={styles.Controls}>
-            <div className={styles.TextAreaContainer}>
+            <div className={styles.TextAreaContainer} tabindex="0">
                 <TextareaAutosize
                     ref={textareaRef}
                     className={styles.TextArea}

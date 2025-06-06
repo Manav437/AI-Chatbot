@@ -9,6 +9,11 @@ html {
     scroll-behavior: smooth;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+}
+
 .landing-page {
     width: 100%;
     display: flex;
@@ -17,8 +22,8 @@ html {
 }
 
 .navbar {
-    width: 95%;
-    margin: 0 auto;
+    width: 90%;
+    margin: auto;
     margin-top: 10px;
     display: flex;
     flex-direction: row;
@@ -26,29 +31,38 @@ html {
     justify-content: space-between;
 }
 
+.a-tag {
+    border: 1px solid transparent;
+    transition: .3s ease-in-out;
+    text-transform: uppercase;
+}
+
 .a-tag:hover {
-    background: #2C2C2C;
-    border: 1px dashed white;
+    transform: scale(1.05);
+    background: #3d3d3d;
+    border: 1px solid white;
 }
 
 .navbar > a {
+    /* font-weight: 800; */
     text-decoration: none;
-    text-transform: uppercase;
     color: white;
 }
 
 .get-started {
-    border: 1px solid rgb(2, 39, 38);
+    border: 1px solid rgb(62, 61, 61);
+    box-shadow: 3px 3px 0px rgba(255, 255, 255, 0.941);
     background-color: white;
     color: black;
-    padding: 5px;
+    padding: 3px 7px;   
+    /* border: 1px solid transparent; */
     font-weight: 600;
     border-radius: 10px;
     transition: all 0.3s ease;
 }
 
 .get-started:hover {
-    color: green;
+    /* border: 1px solid blue; */
     background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(202,248,255,1) 0%, rgba(186,204,227,1) 51.2%, rgb(175, 193, 216) 100.1%);
     transform: scale(1.05);
 }
@@ -57,7 +71,7 @@ html {
     stroke-dasharray: 300;        /* Length of dash pattern */
     stroke-dashoffset: 300;       /* Hidden at start */
     animation: draw 2s ease forwards;
-  }
+}
   
 @keyframes draw {
     to {
@@ -66,14 +80,16 @@ html {
 }
 
 .about {
-    border-top: 1px dashed rgb(100, 100, 0);
+    border-top: 3px solid #2C2C2C;
     display: flex;
     text-align: center;
     min-height: 100vh;
     flex-direction: row;
     width: 100%;
-    border-bottom: 1px dashed rgb(100, 100, 0);
+    border-bottom: 4px dotted #2C2C2C;
     padding-bottom: 100px;
+    /* border-top: 10px dotted rgb(163, 163, 1); */
+
 }
 
 .about-one, .about-two {
@@ -97,7 +113,7 @@ html {
     left: 260px;
     width: 350px;
     height: 200px;
-    border: 3px dashed #cdcf30; /* Change color as needed */
+    border: 4px dashed #2C2C2C; /* Change color as needed */
     border-radius: 50% / 50%;
     z-index: -1;
     transform: rotate(-20deg); /* optional for style */
@@ -118,22 +134,23 @@ html {
 .text-one {
     margin-top: 70px;
     font-family: "Mauline";
-  /* font-optical-sizing: auto; */
-  line-height: 1;
-  font-weight: 800;
-  font-size: 7rem;
-  font-style: normal;
+    /* font-optical-sizing: auto; */
+    line-height: 1;
+    font-weight: 800;
+    font-size: 7rem;
+    font-style: normal;
 }
 
 .one-img {
     margin: 0 auto;
     height: 400px;
     width: 90%;
+    border-radius: 10px;
+    border: 3px dashed #2c2c2c;
 }
 
 .one-img img {
-    object-fit: fill;
-    border: 1px dashed rgb(94, 94, 0);
+    object-fit: fit-cover;
     padding: 10px;
     border-radius: 20px;
     height: 100%;
@@ -142,7 +159,6 @@ html {
 }
 
 .info {
-    border-top: 1px dashed rgb(163, 163, 1);
     width: 100%;
     min-height: 90vh;
     margin-top: 30px;
@@ -197,6 +213,10 @@ html {
     transition: width 0.4s ease, left 0.4s ease;
 }
 
+#features {
+    border-bottom: 4px dotted #2C2C2C;
+}
+
 .footer {
     width: 100%;
     background: #F5EEDD;
@@ -206,7 +226,7 @@ html {
 .socials {
     border: 1px solid black;
     width: 100%;
-    height: 70px;
+    height: 75px;
     background: #7AC6D2;
     padding-bottom: 50px;
 }
@@ -214,13 +234,14 @@ html {
 .socials img {
     height: 35px;
     background-color: transparent;
-    padding: 5px;
+    padding: 3px;
     border-radius: 5px;
+    transition: all 0.3s ease-in-out;
 }
 
 .socials img:hover {
     background: rgb(255, 255, 255);
-    transform: scale(1.5);
+    transform: scale(1.2);
 }
 
 .footer >div > p {
@@ -234,7 +255,6 @@ html {
     justify-content: space-between;
 }
 
-
 .footer >div > p > img {
     height: 25px;
 }
@@ -243,47 +263,47 @@ html {
     position: relative;
     display: inline-block;
     cursor: pointer;
-  }
+}
   
-  .tooltip .tooltiptext {
+.tooltip .tooltiptext {
+    font-size: .8rem;
+    font-weight: 500;
     visibility: hidden;
-    width: 80px;
-    background-color: black;
-    color: #fff;
+    width: 65px;
+    background-color: #fff;
+    color: #2C2C2C;
     text-align: center;
-    padding: 5px;
-    border-radius: 6px;
-  
+    padding: 7px;
+    border-radius: 10px;
     position: absolute;
     z-index: 1;
     bottom: 125%; /* above the icon */
     left: 50%;
     transform: translateX(-50%);
-    
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s ease-in-out;
   }
   
-  .tooltip:hover .tooltiptext {
+.tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
-  }
+}
   
-  .spin {
+.spin {
     animation: spin 10s linear infinite;
-  }
+}
   
-  .spin:hover {
+.spin:hover {
     animation-play-state: paused;
-  }
+}
 
-  @keyframes spin {
+@keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-  }
+}
 
 
-@media (max-width: 430px) {
+@media (max-width: 600px) {
     .landing-page {
         max-width: 100vw;
         overflow-x: hidden;
@@ -347,15 +367,16 @@ html {
     }
 
     .one-img {
-        height: 200px;
-        width: 90%;
+        height: 300px;
+        width: 95%;
         overflow: hidden;
-        border: 1px dashed yellow;
+        /* border: 1px dashed yellow; */
         border-radius: 20px;
     }
 
     .one-img img {
-        transform: scale(1.75);
+        transform: scaleX(1.1);
+        /* transform: scaleY(1.4); */
     }
 
     .student-div {

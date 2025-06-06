@@ -1,8 +1,18 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import './Card.css';
 
 const SquishyCard = () => {
+    useEffect(() => {
+        AOS.init({
+            duration: 1000, // animation duration in ms
+            once: true, // whether animation should happen only once
+        });
+    }, []);
+
     const plans = [
         { title: "Individual Free", price: "$0", description: "Basic access with limited features.", color: "#3b82f6" }, // blue
         { title: "Individual Pro", price: "$299", description: "Access to all pro features.", color: "#8b5cf6" }, // purple
@@ -10,8 +20,8 @@ const SquishyCard = () => {
     ];
 
     return (
-        <section className="squishy-card-section">
-            <div className="squishy-card-container">
+        <section className="squishy-card-section" >
+            <div className="squishy-card-container" data-aos="fade" data-aos-easing="ease-in">
                 {plans.map((plan, index) => (
                     <Card
                         key={index}
@@ -66,7 +76,7 @@ const Card = ({ title, price, description, color }) => {
                 </p>
             </div>
             {/* <button className="button"> */}
-            <Link className="button" to="/chat">Get it now</Link>
+            <Link className="cta-button" to="/chat">Get it now</Link>
             {/* </button> */}
             <Background />
         </motion.div>

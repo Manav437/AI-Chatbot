@@ -3,7 +3,7 @@
     flex-direction: column;
     gap: 8px;
     height: 100%;
-    padding: 8px;
+    padding: 10px;
     overflow-y: auto;
 }
 
@@ -18,10 +18,11 @@
 }
  
 .Message {
-    width: 90%;
+    width: fit-content;
+    max-width: 90%;
     overflow-x: auto;
     padding: 0 16px;
-    border-radius: 16px;
+    border-radius: 20px;
     font-size: 14px;
     background: #1b1b1b;
     color: white; /* Ensures assistant text is readable */
