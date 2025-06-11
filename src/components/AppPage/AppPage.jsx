@@ -4,6 +4,8 @@ import { Chat } from "../Chat/Chat"
 import { Controls } from "../Controls/Controls"
 import { Loader } from "../Loader/Loader"
 import { Link } from "react-router-dom"
+import { Sidebar } from "../SideBar/Sidebar"
+import { BackgroundGrid } from "../BackgroundGrid/BackgroundGrid"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import styles from "./App.module.css"
@@ -12,6 +14,12 @@ function AppPage() {
     const assistant = new Assistant()
     const [messages, setMessages] = useState([])
     const [isLoading, setIsLoading] = useState(false)
+    const [sidebarOpen, setSidebarOpen] = useState(false)
+
+
+    const toggleSidebar = () => {
+        setSidebarOpen(!sidebarOpen)
+    }
 
     useEffect(() => {
         AOS.init({
@@ -42,15 +50,19 @@ function AppPage() {
     return (
         <div style={{
             backgroundColor: "#121212",
-            backgroundImage: `
-              linear-gradient(#1e1e1e 1px, transparent 1px),
-              linear-gradient(90deg, #1e1e1e 1px, transparent 1px)
-            `,
-            backgroundSize: "40px 40px",
+            // backgroundImage: `
+            //   linear-gradient(#1e1e1e 1px, transparent 1px),
+            //   linear-gradient(90deg, #1e1e1e 1px, transparent 1px)
+            // `,
+            // backgroundSize: "40px 40px",
             minHeight: "100vh",
             width: "100vw",
             color: "white"
         }} data-aos="fade-in">
+            <BackgroundGrid />
+
+            <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+
             <div className={styles.App}>
                 {isLoading && <Loader />}
                 <header className={styles.Header}>

@@ -7,17 +7,19 @@
 }
 
 .TextAreaContainer {
+    outline: none;
     flex-grow: 1;
-    padding: 8px 16px;
+    padding: 10px 16px;
     line-height: 0;
-    border:1px solid transparent;
-    border-radius: 10px;
+    border : 5px solid #2c2c2c;
+    border-radius: 20px;
     background: light-dark(#ffffff, #0d0d0d);
 }
 
 .TextAreaContainer:has(textarea:focus) {
-    border: 1px solid #535353;
+    border: 5px solid #4a4a4a;
 }
+
 .TextArea {
     color: light-dark(#0d0d0d, #ffffff);
     caret-color: light-dark(#0d0d0d, #ffffff);
@@ -26,29 +28,23 @@
     border: none;
     outline: none;
     resize: none;
-    background: light-dark(#ffffff, black);
+    background: light-dark(#ffffff, #0d0d0d);
 }
 
 .Button {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border: none;
     border-radius: 50%;
     outline: none;
-    background: light-dark(#0d0d0d, #ececec);
     cursor: pointer;
-}
-
-
-.Button svg {
-    fill : light-dark(#f3f3f3, #171717);
-}
-
-.Button {
+    background : #d6d1d1;
+    border: 3px solid #4a4a4a;
     transition: .3s ease-in-out;
+
 }
 
 .Button:hover {

@@ -24,11 +24,12 @@
 }
 
 .Header {
+    display: flex;
+    justify-content: center;
     text-align: center;
     align-items: center;
     width: 100%;
-    display: flex;
-    flex-direction: column;
+    gap: 20px;    /* flex-direction: column; */
 }
 
 .Logo {

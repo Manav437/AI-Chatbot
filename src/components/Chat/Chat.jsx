@@ -31,37 +31,45 @@ export function Chat({ messages }) {
 
     return (
         <div className={styles.Chat}>
-            {[WELCOME_MESSAGE_GROUP, ...messagesGroups].map((messages, groupIndex) => (
-                <div key={groupIndex} className={styles.Group}>
-                    {messages.map(({ role, content }, index) => (
-                        <div className={styles.Message} key={index} data-role={role}>
-                            <Markdown
-                                components={{
-                                    code({ node, inline, className, children, ...props }) {
-                                        const match = /language-(\w+)/.exec(className || "")
-                                        return !inline && match ? (
-                                            <SyntaxHighlighter
-                                                style={twilight}
-                                                language={match[1]}
-                                                PreTag="div"
-                                                {...props}
-                                            >
-                                                {String(children).replace(/\n$/, "")}
-                                            </SyntaxHighlighter>
-                                        ) : (
-                                            <code className={className} {...props}>
-                                                {children}
-                                            </code>
-                                        )
-                                    }
-                                }}
-                            >
-                                {content}
-                            </Markdown>
-                        </div>
-                    ))}
-                </div>
-            ))}
+            {[WELCOME_MESSAGE_GROUP, ...messagesGroups].map((messages, groupIndex) => {
+                const isInitialMessageOnly = groupIndex === 0 && messages.length === 1 && messages[0].role === "assistant" && !messages.some(msg => msg.role === "user");
+
+                return (
+                    <div
+                        key={groupIndex}
+                        className={`${styles.Group} ${isInitialMessageOnly ? styles.CenteredWelcome : ""}`}
+                    >
+                        {messages.map(({ role, content }, index) => (
+                            <div className={styles.Message} key={index} data-role={role}>
+                                <Markdown
+                                    components={{
+                                        code({ node, inline, className, children, ...props }) {
+                                            const match = /language-(\w+)/.exec(className || "")
+                                            return !inline && match ? (
+                                                <SyntaxHighlighter
+                                                    style={twilight}
+                                                    language={match[1]}
+                                                    PreTag="div"
+                                                    {...props}
+                                                >
+                                                    {String(children).replace(/\n$/, "")}
+                                                </SyntaxHighlighter>
+                                            ) : (
+                                                <code className={className} {...props}>
+                                                    {children}
+                                                </code>
+                                            )
+                                        }
+                                    }}
+                                >
+                                    {content}
+                                </Markdown>
+                            </div>
+                        ))}
+                    </div>
+                );
+            })}
+
             <div ref={messagesEndRef} />
         </div>
     )
