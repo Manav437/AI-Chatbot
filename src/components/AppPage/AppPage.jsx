@@ -1,83 +1,128 @@
-import React, { useState, useEffect } from "react"
-import { Assistant } from "../../assistance/googleai"
-import { Chat } from "../Chat/Chat"
-import { Controls } from "../Controls/Controls"
-import { Loader } from "../Loader/Loader"
-import { Link } from "react-router-dom"
-import { Sidebar } from "../SideBar/Sidebar"
-import { BackgroundGrid } from "../BackgroundGrid/BackgroundGrid"
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import styles from "./App.module.css"
+import React, { useState, useEffect, useRef } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+import { Assistant } from "../../assistance/googleai";
+import { Chat } from "../Chat/Chat";
+import { Controls } from "../Controls/Controls";
+import { Loader } from "../Loader/Loader";
+import { Sidebar } from "../SideBar/Sidebar";
+import { FiMenu } from "react-icons/fi";
 
 function AppPage() {
-    const assistant = new Assistant()
-    const [messages, setMessages] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
-    const [sidebarOpen, setSidebarOpen] = useState(false)
-
-
-    const toggleSidebar = () => {
-        setSidebarOpen(!sidebarOpen)
+    const assistantRef = useRef(null);
+    const scrollRef = useRef(null);
+    if (!assistantRef.current) {
+        assistantRef.current = new Assistant();
     }
+
+    const [messages, setMessages] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [suggestedText, setSuggestedText] = useState("");
+
+    const isDesktop = () => window.innerWidth > 768;
+    const [isSidebarOpen, setSidebarOpen] = useState(isDesktop());
+    const [activeItem, setActiveItem] = useState("Chat");
+
+    const toggleSidebar = () => setSidebarOpen((o) => !o);
 
     useEffect(() => {
-        AOS.init({
-            duration: 1200, // animation duration in ms
-            once: true, // whether animation should happen only once
-            easing: 'ease-in-out',
-        });
+        AOS.init({ duration: 600, once: true, easing: "ease-in-out" });
+        const handleResize = () => {
+            setSidebarOpen(window.innerWidth > 768);
+        };
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-    function addMessage(message) {
-        setMessages((prevMessages) => [...prevMessages, message])
-    }
+    const addMessage = (message) => {
+        setMessages((prev) => [...prev, message]);
+    };
 
-    async function handleContentSend(content) {
-        // alert(content)
-        addMessage({ content, role: "user" })
-        setIsLoading(true)
+    const handleContentSend = async (content) => {
+        setSuggestedText("");
+        addMessage({ content, role: "user" });
+        setIsLoading(true);
         try {
-            const result = await assistant.chat(content)
-            addMessage({ content: result, role: "assistant" })
+            const result = await assistantRef.current.chat(content);
+            addMessage({ content: result, role: "assistant" });
         } catch (error) {
-            addMessage({ content: "Sorry, I couldn't process your request!", role: "system" })
+            console.error("Chat Error:", error);
+
+            let errorMessage = "Something went wrong. Please try again.";
+
+            if (
+                error?.message?.includes("API_KEY_INVALID") ||
+                error?.message?.includes("API key not valid")
+            ) {
+                errorMessage = "Invalid API key. Please check your configuration.";
+            } else if (
+                error?.status === 404 ||
+                error?.message?.includes("is not found for API version") ||
+                error?.message?.includes("not supported for generateContent")
+            ) {
+                errorMessage =
+                    "Model not available. The selected model may be deprecated or unsupported.";
+            } else if (error?.message?.includes("SAFETY")) {
+                errorMessage =
+                    "The response was blocked due to safety filters. Try rephrasing your message.";
+            } else if (error?.message?.includes("quota")) {
+                errorMessage =
+                    "API quota exceeded. Please wait a moment before sending another message.";
+            } else if (!navigator.onLine) {
+                errorMessage =
+                    "Network error. Check your internet connection and try again.";
+            }
+
+            addMessage({ content: errorMessage, role: "system" });
         } finally {
-            setIsLoading(false)
+            setIsLoading(false);
         }
-    }
+    };
 
     return (
-        <div style={{
-            backgroundColor: "#121212",
-            // backgroundImage: `
-            //   linear-gradient(#1e1e1e 1px, transparent 1px),
-            //   linear-gradient(90deg, #1e1e1e 1px, transparent 1px)
-            // `,
-            // backgroundSize: "40px 40px",
-            minHeight: "100vh",
-            width: "100vw",
-            color: "white"
-        }} data-aos="fade-in">
-            <BackgroundGrid />
+        <div className="flex min-h-screen w-screen bg-bg text-text-primary font-sans">
+            <Sidebar
+                isOpen={isSidebarOpen}
+                toggle={toggleSidebar}
+                activeItem={activeItem}
+                setActiveItem={setActiveItem}
+            />
 
-            <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
-
-            <div className={styles.App}>
-                {isLoading && <Loader />}
-                <header className={styles.Header}>
-                    <Link style={{ cursor: "pointer" }} to="/"><img className={styles.Logo} src="/header-img.png" /></Link>
-                    <h2 className={styles.Title}>Gemini X</h2>
-                </header>
-
-                <div className={styles.ChatContainer}>
-                    <Chat messages={messages} />
+            <main
+                className={`flex-grow flex flex-col h-screen transition-[margin-left] duration-300 ease-in-out overflow-hidden ${isSidebarOpen && isDesktop() ? "ml-[240px]" : "ml-[65px] max-md:ml-0"
+                    }`}
+            >
+                {!isSidebarOpen && (
+                    <button
+                        className="fixed top-4 left-4 z-[100] bg-surface/80 backdrop-blur-md border border-border text-text-primary cursor-pointer hidden max-md:flex items-center justify-center p-2.5 rounded-xl shadow-lg transition-all hover:bg-surface"
+                        onClick={toggleSidebar}
+                    >
+                        <FiMenu size={20} />
+                    </button>
+                )}
+                <div
+                    ref={scrollRef}
+                    className="flex-grow w-full max-w-[760px] mt-20 md:mt-0 mx-auto overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] px-4 pt-8 pb-32 max-md:px-3 max-md:pt-4"
+                >
+                    <Chat
+                        messages={messages}
+                        onSuggest={(text) => setSuggestedText(text)}
+                        scrollContainerRef={scrollRef}
+                    />
+                    {isLoading && <Loader />}
                 </div>
-                <Controls isDisabled={isLoading} onSend={handleContentSend} />
-            </div>
-        </div>
-    )
-}
 
+                <div className="w-full max-w-[760px] mx-auto flex-shrink-0 px-4 pt-3 pb-5 max-md:px-3 max-md:pt-2 max-md:pb-4">
+                    <Controls
+                        isDisabled={isLoading}
+                        onSend={handleContentSend}
+                        initialValue={suggestedText}
+                    />
+                </div>
+            </main>
+        </div>
+    );
+}
 
 export default AppPage;
